@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Reciver.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class DeviceController : ControllerBase
     {
