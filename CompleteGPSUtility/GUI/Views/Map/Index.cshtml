@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewData["Title"] = "Map";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="@ViewData["OSM-Server"]/mapbox.css" rel="stylesheet" />
+<link href="@ViewData["OSM-Server"]/mapbox-gl.css" rel="stylesheet" />
+<script src="@ViewData["OSM-Server"]/mapbox-gl.js"></script>
+<script src="@ViewData["OSM-Server"]/mapbox.js"></script>
+<script src="@ViewData["OSM-Server"]/leaflet-hash.js"></script>
+
+<script type="text/javascript">
+    var osmServer = '@ViewData["OSM-Server"]';
+</script>
+
+<link href="~/css/Map/map.css" rel="stylesheet" />
+<script src="~/js/Map/initMap.js"></script>
+
+
+<div id="map"></div>
+
+
+

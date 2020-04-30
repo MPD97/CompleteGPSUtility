@@ -1,0 +1,9 @@
+﻿	body { margin: 0; padding: 0; }
+
+#map {
+    position: absolute;
+    left: 0px;
+    top: 59px;
+    width: 100%;
+    height: calc(100% - 60px);
+}
