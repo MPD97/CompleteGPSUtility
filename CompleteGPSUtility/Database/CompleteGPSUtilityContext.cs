@@ -28,6 +28,10 @@ namespace Database.Entities
             {
                 property.SetColumnType("decimal(9,6)");
             }
+            //builder.Entity<Location>().HasKey(a => new { a.CurrentInterval });
+            //builder.Entity<Location>()
+            //    .Property(p => p.CurrentInterval)
+            //    .HasColumnType("SMALLINT");
         }
     }
 }

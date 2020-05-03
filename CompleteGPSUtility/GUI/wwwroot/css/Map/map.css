@@ -7,3 +7,20 @@
     width: 100%;
     height: calc(100% - 60px);
 }
+#devices{
+    position: absolute;
+    top: 70px;
+    left: 20px;
+}
+#locations {
+    position: absolute;
+    top: 70px;
+    right: 50px;
+}
+#locations > .card-body {
+    overflow: auto;
+    max-height: 300px;
+}
+#locations button {
+    font-size: 12px;
+}

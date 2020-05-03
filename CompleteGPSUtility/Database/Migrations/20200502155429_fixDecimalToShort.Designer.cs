@@ -4,14 +4,16 @@ using Database.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Database.Migrations
 {
     [DbContext(typeof(CompleteGPSUtilityContext))]
-    partial class CompleteGPSUtilityContextModelSnapshot : ModelSnapshot
+    [Migration("20200502155429_fixDecimalToShort")]
+    partial class fixDecimalToShort
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -172,9 +174,6 @@ namespace Database.Migrations
 
                     b.Property<short>("BatteryVoltage")
                         .HasColumnType("smallint");
-
-                    b.Property<int>("CurrentInterval")
-                        .HasColumnType("int");
 
                     b.Property<short>("DeviceId")
                         .HasColumnType("smallint");

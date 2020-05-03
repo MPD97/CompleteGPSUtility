@@ -20,7 +20,8 @@ namespace GUI
             Host.CreateDefaultBuilder(args)
                 .ConfigureAppConfiguration((hostingContext, config) =>
                 {
-                    config.AddJsonFile("/data/appsettings.json", optional: true, reloadOnChange: true);
+                    config.AddJsonFile("/data/appsettings.json"
+                        , optional: true, reloadOnChange: true);
                 })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {

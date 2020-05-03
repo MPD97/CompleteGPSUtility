@@ -4,9 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Database.Entities;
 using Database.Models;
+using Database.Settings;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
 namespace GUI.Controllers
@@ -23,13 +25,18 @@ namespace GUI.Controllers
 
         public CompleteGPSUtilityContext Context { get; set; }
 
-        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, RoleManager<AppRole> roleManager, ILogger<AccountController> logger, CompleteGPSUtilityContext context)
+        public IConfiguration Configuration { get; set; }
+        public static GUISettings GUISettings { get; set; } = new GUISettings();
+
+        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, RoleManager<AppRole> roleManager,
+            ILogger<AccountController> logger, CompleteGPSUtilityContext context, IConfiguration configuration)
         {
             UserManager = userManager;
             SignInManager = signInManager;
             RoleManager = roleManager;
             Logger = logger;
             Context = context;
+            Configuration = configuration;
         }
 
         [HttpGet]
@@ -51,6 +58,22 @@ namespace GUI.Controllers
             {
                 return View(model);
             }
+            var availableTokens = Configuration.GetSection("GUI:AvailableTokens").Get<string[]>();
+
+            if (availableTokens.Contains(model.InvitationToken) == false)
+            {
+                Logger.LogWarning($"Used invalid InvitationToken:[{model.InvitationToken}] at account register.");
+                ModelState.AddModelError("InvitationToken", "Invalid Token.");
+                var t = Task.Run(async delegate
+                {
+                    await Task.Delay(5000);
+                    return 42;
+                });
+                t.Wait();
+
+                return View(model);
+            }
+
             AppUser newUser = new AppUser { Email = model.Email, UserName = model.Email };
             var result = await UserManager.CreateAsync(newUser, model.Password);
             if (result.Succeeded)
@@ -62,12 +85,12 @@ namespace GUI.Controllers
 
                 return RedirectToAction("Index", "Home");
             }
-
             foreach (var error in result.Errors)
             {
                 ModelState.AddModelError(string.Empty, error.Description);
             }
-            return View();
+
+            return View(model);
         }
 
 

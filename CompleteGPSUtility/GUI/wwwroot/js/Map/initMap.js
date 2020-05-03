@@ -15,8 +15,8 @@ $(document).ready(function () {
         map = new mapboxgl.Map({
             container: 'map',
             style: osmServer + '/styles/' + selectedStyle + '/style.json',
-            center: [19.656, 52.124],
-            zoom: 6.77,
+            center: [21.0521, 52.2167],
+            zoom: 10.5,
             hash: true
         });
         map.addControl(new mapboxgl.NavigationControl());

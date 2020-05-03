@@ -14,6 +14,12 @@ namespace Database.Models
         public string Email { get; set; }
 
         [Required]
+        [MinLength(35)]
+        [MaxLength(45)]
+        [DataType(DataType.Text)]
+        public string InvitationToken { get; set; }
+
+        [Required]
         [MinLength(8)]
         [MaxLength(20)]
         [DataType(DataType.Password)]

@@ -13,8 +13,8 @@ namespace Database.Entities
         public short BatteryVoltage { get; set; }
         public byte BatteryPercentage { get; set; }
 
-        public int TimeUnix { get; set; }
-
+        public int TimeY2K { get; set; }
+        public int CurrentInterval { get; set; }
 
         public short DeviceId { get; set; }
         public Device Device { get; set; }

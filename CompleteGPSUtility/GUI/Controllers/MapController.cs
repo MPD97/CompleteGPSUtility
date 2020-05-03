@@ -26,7 +26,7 @@ namespace GUI.Controllers
             if (string.IsNullOrEmpty(Configuration["OSM-Server:URL"]))
             {
                 Logger.LogError($"Configuration file has not defined URL of OSM-Server.");
-                ViewData["OSM-Server"] = "http://localhost:8080";
+                ViewData["OSM-Server"] = "http://192.168.88.35:8080";
 
             }
             else
