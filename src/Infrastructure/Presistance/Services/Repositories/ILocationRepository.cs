@@ -8,12 +8,10 @@ namespace Presistance.Services.Repositories
 {
     public interface ILocationRepository
     {
-        public IEnumerable<Location> GetAll(int skip = 0, int take = 1000);
-        public Task<Location> FindByIdAsync(int id);
+        public Task<IEnumerable<Location>> GetAll(Device device, int from = 0, int to = int.MaxValue, int skip = 0, int take = 1000);
+        public Task<Location> FindByIdAsync(int id, bool include = false);
         public Task Insert(Location location);
         public Task Insert(IEnumerable<Location> locations);
-        public Task<bool> Delete(int id);
-        public void Update(Location location);
         public Task<int> SaveAsync();
     }
 }
