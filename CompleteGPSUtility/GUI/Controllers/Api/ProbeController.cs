@@ -70,14 +70,14 @@ namespace GUI.Controllers.Api
                 {
                     Location location = new Location
                     {
-                        Latitude = modelLocation.a,
-                        Longitude = modelLocation.o,
-                        Altitude = modelLocation.l.HasValue ? modelLocation.l.Value : (short)-1,
+                        Latitude = modelLocation.Latitude,
+                        Longitude = modelLocation.Longitude,
+                        Altitude = modelLocation.Altitude.HasValue ? modelLocation.Altitude.Value : (short)-1,
                         BatteryPercentage = model.VoltagePercentage,
                         BatteryVoltage = model.Voltage,
                         Device = device,
                         DeviceId = device.DeviceId,
-                        TimeY2K = modelLocation.y,
+                        TimeY2K = modelLocation.TimeFrom2000,
                         CurrentInterval = model.CurrentInterval
 
                     };
