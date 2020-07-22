@@ -15,7 +15,6 @@ namespace Presistance.Services.Repositories
             _context = context;
         }
 
-
         public async Task<Location> FindByIdAsync(int id, bool include = false)
         {
             IQueryable<Location> result = _context.Locations;

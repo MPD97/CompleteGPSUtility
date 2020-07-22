@@ -28,6 +28,7 @@ namespace Database.Entities
             {
                 property.SetColumnType("decimal(9,6)");
             }
+            // TODO: Fluent api
         }
     }
 }
