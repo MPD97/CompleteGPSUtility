@@ -9,9 +9,9 @@ namespace Database.Entities
         public short AccessId { get; set; }
 
         public short DeviceId { get; set; }
-        public Device Device { get; set; }
+        public virtual Device Device { get; set; }
 
         public int AppUserId { get; set; }
-        public AppUser AppUser { get; set; }
+        public virtual AppUser AppUser { get; set; }
     }
 }

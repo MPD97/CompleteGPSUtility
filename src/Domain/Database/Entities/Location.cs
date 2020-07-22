@@ -17,6 +17,6 @@ namespace Database.Entities
         public int CurrentInterval { get; set; }
 
         public short DeviceId { get; set; }
-        public Device Device { get; set; }
+        public virtual Device Device { get; set; }
     }
 }
