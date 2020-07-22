@@ -8,7 +8,6 @@ namespace Database.Entities
     {
         public short AccessId { get; set; }
 
-
         public short DeviceId { get; set; }
         public Device Device { get; set; }
 

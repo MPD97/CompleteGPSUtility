@@ -5,7 +5,8 @@ namespace Database
 {
     public class InputProbeDataModel
     {
-        public List<InputLocationModel> l { get; set; } = new List<InputLocationModel>();
+        [JsonProperty("l")]
+        public List<InputLocationModel> Locations { get; set; } = new List<InputLocationModel>();
        
         [JsonProperty("p")]
         public byte VoltagePercentage { get; set; }             //Percentage voltage max = 4.2V, min = 3.5V?

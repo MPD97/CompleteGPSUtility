@@ -8,8 +8,10 @@ namespace Database.Entities
     public class Device
     {
         public short DeviceId { get; set; }
+
         [MaxLength(15)]
         public string IMEI { get; set; }
+
         [MaxLength(30)]
         public string Name { get; set; }
 

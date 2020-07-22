@@ -31,7 +31,7 @@ namespace GUI.Controllers.Api
         [HttpPost]
         public async Task<IActionResult> UpdateLocations(InputProbeDataModel model)
         {
-            Device device = await Context.Devices.FirstOrDefaultAsync(dev => dev.IMEI == model.IMEI);
+            Device device = await Context.Devices.SingleOrDefaultAsync(dev => dev.IMEI == model.IMEI);
 
             if (device == null)
             {
@@ -46,27 +46,27 @@ namespace GUI.Controllers.Api
 
                     if ((await Context.SaveChangesAsync()) <= 0)
                     {
-                        Logger.LogError($"Cannot insert new device into database");
+                        Logger.LogError($"Cannot insert new device with IMEI: [{model.IMEI}] into database");
                     }
                     else
                     {
-                        Logger.LogInformation($"Created new Device with IMEI: [{device.IMEI}]");
+                        Logger.LogInformation($"Created new device with IMEI: [{device.IMEI}]");
                     }
                 }
                 else
                 {
-                    return BadRequest("Unauthorized");
+                    return Unauthorized();
                 }
             }
 
-            if (model.l.Count == 0)
+            if (model.Locations.Count == 0)
             {
                 Logger.LogWarning($"Locations list is empty.");
                 return BadRequest("Locations empty");
             }
             else
             {
-                foreach (var modelLocation in model.l)
+                foreach (var modelLocation in model.Locations)
                 {
                     Location location = new Location
                     {
@@ -83,15 +83,14 @@ namespace GUI.Controllers.Api
                     };
 
                     Context.Locations.Add(location);
-                    if ((await Context.SaveChangesAsync()) <= 0)
-                    {
-                        string json = JsonConvert.SerializeObject(location, Formatting.Indented);
-                        Logger.LogError($"Cannot insert new Location into database.\r\nJSON:{json}");
-                    }
-                    else
-                    {
-                        Logger.LogDebug($"Inserted new Location for IMEI: [{device.IMEI}]");
-                    }
+                }
+                if ((await Context.SaveChangesAsync()) <= 0)
+                {
+                    Logger.LogError($"Cannot insert new Locations into database.");
+                }
+                else
+                {
+                    Logger.LogDebug($"Inserted new Location for IMEI: [{device.IMEI}]");
                 }
             }
             return Ok();

@@ -27,12 +27,10 @@ namespace GUI.Controllers
             {
                 Logger.LogError($"Configuration file has not defined URL of OSM-Server.");
                 ViewData["OSM-Server"] = "http://192.168.88.35:8080";
-
             }
             else
             {
                 ViewData["OSM-Server"] = Configuration["OSM-Server:URL"];
-
             }
             return View();
         }
