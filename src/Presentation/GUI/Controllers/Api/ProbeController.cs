@@ -77,7 +77,7 @@ namespace GUI.Controllers.Api
                         BatteryVoltage = model.Voltage,
                         Device = device,
                         DeviceId = device.DeviceId,
-                        TimeY2K = modelLocation.TimeFrom2000,
+                        TimeFrom2000 = modelLocation.TimeFrom2000,
                         CurrentInterval = model.CurrentInterval
 
                     };

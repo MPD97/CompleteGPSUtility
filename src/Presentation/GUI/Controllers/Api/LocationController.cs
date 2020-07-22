@@ -52,8 +52,8 @@ namespace GUI.Controllers.Api
                 return BadRequest();
             }
 
-            Location[] locations = await Context.Locations.Where(loc => loc.Device == device && loc.TimeY2K >= y2kStart && loc.TimeY2K <= y2kEnd)
-                            .OrderByDescending(loc => loc.TimeY2K).Take(howMany).ToArrayAsync();
+            Location[] locations = await Context.Locations.Where(loc => loc.Device == device && loc.TimeFrom2000 >= y2kStart && loc.TimeFrom2000 <= y2kEnd)
+                            .OrderByDescending(loc => loc.TimeFrom2000).Take(howMany).ToArrayAsync();
 
             return Ok(locations);
         }
