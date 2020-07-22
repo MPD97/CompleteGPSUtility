@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Database.Entities;
 using Database.Models;
-using Database.Settings;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -26,7 +25,6 @@ namespace GUI.Controllers
         public CompleteGPSUtilityContext Context { get; set; }
 
         public IConfiguration Configuration { get; set; }
-        public static GUISettings GUISettings { get; set; } = new GUISettings();
 
         public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, RoleManager<AppRole> roleManager,
             ILogger<AccountController> logger, CompleteGPSUtilityContext context, IConfiguration configuration)
